@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "656885086584",
+    "project_id": "al-hashmi-market-z",
+    "storage_bucket": "al-hashmi-market-z.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656885086584:android:8dd8701280a74fda5cf08d",
+        "android_client_info": {
+          "package_name": "com.example.al_hashmi_market"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "656885086584-jcjmq6gh445s72jr84hsopi6qnfdqd47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8vxp2QydXusgpzncjMAHcHxuKJsHEZhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "656885086584-jcjmq6gh445s72jr84hsopi6qnfdqd47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
