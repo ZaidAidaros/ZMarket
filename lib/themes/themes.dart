@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 
@@ -14,13 +15,18 @@ ThemeData darkTheme=ThemeData(
 
     accentColor: Colors.white,
 
-    accentIconTheme: IconThemeData(color: Colors.black),
-
+    iconTheme: const IconThemeData(
+      color: Colors.green,
+      
+    ),
     dividerColor: Colors.black12,
-
-
-
+    buttonTheme: const ButtonThemeData(
+      colorScheme: ColorScheme.dark(),
+      buttonColor: Color.fromARGB(255, 17, 94, 19),
+    ),
 );
+
+
 ThemeData lightTheme = ThemeData(
 
     primarySwatch: Colors.grey,
@@ -32,13 +38,24 @@ ThemeData lightTheme = ThemeData(
     backgroundColor: const Color(0xFFE5E5E5),
 
     accentColor: Colors.black,
-
-    accentIconTheme: IconThemeData(color: Colors.white),
-
     dividerColor: Colors.white54,
+    iconTheme: const IconThemeData(
+      color: Colors.green,
+    ),
+    buttonTheme: const ButtonThemeData(
+      colorScheme: ColorScheme.dark(),
+      buttonColor: Color.fromARGB(255, 17, 94, 19),
+    ),
 
   ); 
 
-class ThemeModes {
+class ThemeModes with ChangeNotifier{
+  ThemeMode themeMode = ThemeMode.dark;
+  changeThemeMode(bool isLight){
+    if(isLight){
+      themeMode=ThemeMode.light;
+      notifyListeners();
+    }
+  }
   
 }

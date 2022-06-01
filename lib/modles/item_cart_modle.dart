@@ -1,21 +1,11 @@
 import 'package:al_hashmi_market/modles/product_modle.dart';
 import 'package:flutter/widgets.dart';
 
-enum StutsOfOrder{
-  SENDED,
-  WAIT,
-  ACCEPTED,
-  REJECTED,
-  IN_PROCESS,
-  IN_TESLEEM,
-  OK,
-  NO,
-}
+
 
 
 class Item{
   late Product _product;
-  late StutsOfOrder stutsOfOrder;
   late int _quantity;
   late double _total_price;
   Item(this._product,this._quantity,this._total_price);
@@ -23,9 +13,11 @@ class Item{
 
   incQuan(){
     _quantity++;
+    _total_price=(_product.toMap()['price'] * _quantity);
   }
   decQuan(){
     _quantity--;
+    _total_price=(_product.toMap()['price'] * _quantity);
   }
 
   get totalPriceOfItem=>_quantity*_product.toMap()['price'];
@@ -34,7 +26,6 @@ class Item{
       'item':_product,
       'quantity':_quantity,
       'total_price_forItem':_total_price,
-      'stuts':stutsOfOrder
     };
   }
   Item.fromMap(Map map){
@@ -46,6 +37,5 @@ class Item{
     _product=snapShot.data['item'];
     _quantity=snapShot.data['quantity'];
     _total_price=snapShot.data['total_price_forItem'];
-    stutsOfOrder=snapShot.data['stuts'];
   }
 }
