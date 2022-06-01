@@ -1,8 +1,0 @@
-import 'package:flutter/material.dart';
-
-class MyButtons{
-  
-  Widget button (String text, function onPressed){
-    return RaisedButton();
-
-}
