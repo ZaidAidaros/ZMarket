@@ -11,7 +11,7 @@ ThemeData darkTheme=ThemeData(
 
     brightness: Brightness.dark,
 
-    backgroundColor: const Color(0xFF212121),
+    backgroundColor: Color.fromARGB(255, 148, 10, 10),
 
     accentColor: Colors.white,
 
@@ -24,6 +24,15 @@ ThemeData darkTheme=ThemeData(
       colorScheme: ColorScheme.dark(),
       buttonColor: Color.fromARGB(255, 17, 94, 19),
     ),
+    inputDecorationTheme: const InputDecorationTheme(
+      border:OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      ),
+      focusColor: Color.fromARGB(255, 206, 100, 1),
+      iconColor: Color.fromARGB(255, 160, 204, 0),
+      fillColor: Color.fromARGB(255, 1, 63, 114),
+      
+    )
 );
 
 
@@ -46,16 +55,27 @@ ThemeData lightTheme = ThemeData(
       colorScheme: ColorScheme.dark(),
       buttonColor: Color.fromARGB(255, 17, 94, 19),
     ),
+    inputDecorationTheme: const InputDecorationTheme(
+      border:OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      ),
+      focusColor: Color.fromARGB(255, 206, 100, 1),
+      iconColor: Color.fromARGB(255, 160, 204, 0),
+      fillColor: Color.fromARGB(255, 1, 63, 114),
+      
 
+    )
   ); 
 
 class ThemeModes with ChangeNotifier{
-  ThemeMode themeMode = ThemeMode.dark;
-  changeThemeMode(bool isLight){
-    if(isLight){
+  var themeMode = ThemeMode.dark;
+  changeThemeMode(bool isDark){
+    if(isDark){
       themeMode=ThemeMode.light;
-      notifyListeners();
+    }else{
+      themeMode=ThemeMode.dark;
     }
+    notifyListeners();
   }
   
 }

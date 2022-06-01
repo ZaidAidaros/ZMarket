@@ -1,6 +1,7 @@
 
 import 'package:al_hashmi_market/modles/user_modle.dart';
 import 'package:al_hashmi_market/screens/first_page.dart';
+import 'package:al_hashmi_market/screens/sign_page.dart';
 import 'package:al_hashmi_market/themes/themes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -18,21 +19,18 @@ void main()async {
 class Start extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<ThemeModes>(
-          create: (context) => ThemeModes(),
-        ),
-        ChangeNotifierProvider<User>(
-          create: (context) => User(),
-        )
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        themeMode: ThemeModes().themeMode,
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        home: FirstPage(),
+    return ChangeNotifierProvider(
+      create: (context) => ThemeModes(),
+      child: Consumer<ThemeModes>(
+        builder: (context,thememodes,child){
+          return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          themeMode: thememodes.themeMode,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          home: SignInUp(),
+        );
+        }
       ),
     );
   }
