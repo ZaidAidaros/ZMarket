@@ -67,13 +67,15 @@ ThemeData lightTheme = ThemeData(
     )
   ); 
 
-class ThemeModes with ChangeNotifier{
-  var themeMode = ThemeMode.dark;
-  changeThemeMode(bool isDark){
+class ThemeModes extends ChangeNotifier{
+  ThemeMode themeMode = ThemeMode.dark;
+  void changeThemeMode(bool isDark){
     if(isDark){
-      themeMode=ThemeMode.light;
-    }else{
+      print(isDark);
       themeMode=ThemeMode.dark;
+    }else{
+      print(isDark);
+      themeMode=ThemeMode.light;
     }
     notifyListeners();
   }
