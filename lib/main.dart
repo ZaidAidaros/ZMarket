@@ -1,5 +1,7 @@
 import 'package:al_hashmi_market/modles/user_modle.dart';
 import 'package:al_hashmi_market/screens/login/RegisterP.dart';
+import 'package:al_hashmi_market/screens/login/register_details_p.dart';
+import 'package:al_hashmi_market/screens/login/signin_p.dart';
 import 'package:al_hashmi_market/themes/themes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,7 @@ class Start extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ThemeModes>(create: (context) => ThemeModes()),
-        ChangeNotifierProvider<User>(create: (context) => User()),
+        ChangeNotifierProvider<UserM>(create: (context) => UserM()),
       ],
       child: Consumer<ThemeModes>(
         builder: ((context, value, child) => MaterialApp(
@@ -27,10 +29,10 @@ class Start extends StatelessWidget {
             themeMode: value.themeMode,
             theme: lightTheme,
             darkTheme: darkTheme,
-            home: Consumer<User>(
-              builder: ((context, user, child) => Register()),
+            home: Consumer<UserM>(
+              builder: ((context, user, child) => SignIn()),
             ))),
       ),
     );
   }
-}
+} 

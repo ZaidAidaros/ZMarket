@@ -1,8 +1,12 @@
+import 'package:al_hashmi_market/api_services/auth.dart';
 import 'package:al_hashmi_market/modles/company_modle.dart';
 import 'package:al_hashmi_market/modles/location_modle.dart';
 import 'package:flutter/widgets.dart';
 
-class User extends ChangeNotifier{
+late final UserM userM;
+late final AuthService authService;
+
+class UserM extends ChangeNotifier{
   late final String _uid;
   late final String _first_name;
   late final String _sec_name;
@@ -16,17 +20,22 @@ class User extends ChangeNotifier{
   late final bool isHaveCom;
   late final Company _company;
 
-  User();
+  UserM();
   
-  User._(this._uid,this._first_name,this._sec_name,this._last_name,
+  UserM._(this._uid,this._first_name,this._sec_name,this._last_name,
   this._family_name,this._email,this._phone,this._location,
   this._dateOfBirthDay,this.isHaveCom,this._company){
     _full_name= _first_name+' '+_sec_name+' '+_last_name+' '+_family_name;
   }
 
+  
+
   String get firstName=>_first_name;
   String get familytName=>_family_name;
   String get uid=>_uid;
+  setUid(String uid){
+    _uid=uid;
+  }
   
   Map<String,dynamic> toMap(){
     Map<String,dynamic> map={
@@ -45,7 +54,7 @@ class User extends ChangeNotifier{
     };
     return map;
   }
-  User.fromSnapShot(AsyncSnapshot snapshot){
+  UserM.fromSnapShot(AsyncSnapshot snapshot){
     _uid=snapshot.data['uid'];
     _first_name=snapshot.data['first_name'];
     _sec_name=snapshot.data['sec_name'];
@@ -61,5 +70,8 @@ class User extends ChangeNotifier{
 
     notifyListeners();
   }
+
+
+  
 
 }

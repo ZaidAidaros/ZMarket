@@ -40,11 +40,15 @@ ThemeData lightTheme = ThemeData(
 
     primarySwatch: Colors.grey,
 
-    primaryColor: Colors.white,
+    primaryColor: Color.fromARGB(255, 231, 230, 230),
 
     brightness: Brightness.light,
 
-    backgroundColor: const Color(0xFFE5E5E5),
+    backgroundColor: Color.fromARGB(255, 223, 221, 221),
+    elevatedButtonTheme: const ElevatedButtonThemeData(style: ButtonStyle(
+      alignment: Alignment.center,
+      
+    )),
 
     accentColor: Colors.black,
     dividerColor: Colors.white54,
