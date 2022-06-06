@@ -1,3 +1,4 @@
+import 'package:al_hashmi_market/modles/user_modle.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -5,6 +6,7 @@ String erro = '';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  String? codeViref;
 
   //streem
 
@@ -40,18 +42,31 @@ class AuthService {
 
   Future signInWithPhone(String phone) async {
     try {
-      await _auth.signInWithPhoneNumber(phone);
+      ConfirmationResult confirmationResult = await _auth.signInWithPhoneNumber(phone);
+      return confirmationResult;
     } catch (e) {
       erro = e.toString();
+      return null;
     }
   }
 
-  // Future virefyPhoneNum(String phoneNumber,,Function(PhoneAuthCredential) verificationCompleted) async {
-  //   await _auth.verifyPhoneNumber(
-  //       phoneNumber: phoneNumber,
-  //       verificationCompleted: verificationCompleted,
-  //       verificationFailed: verificationFailed,
-  //       codeSent: (String ,int ){},
-  //       codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
-  // }
+  Future virefyPhoneNum(String phoneNumber,Function onComplate) async {
+    await _auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        verificationCompleted: (PhoneAuthCredential _phoneAuthCredential)async{
+          userCredential = await _auth.signInWithCredential(_phoneAuthCredential);
+          onComplate;
+        },
+        verificationFailed: (FirebaseAuthException e){
+          erro=e.message.toString();
+        },
+        codeSent: (String code,int? i ){
+          codeViref=code;
+        },
+        codeAutoRetrievalTimeout: (String c){
+          codeViref=c;
+        },
+        timeout:const Duration(seconds: 60)
+        );
+  }
 }

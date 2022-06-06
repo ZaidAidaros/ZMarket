@@ -1,4 +1,5 @@
 import 'package:al_hashmi_market/modles/user_modle.dart';
+import 'package:al_hashmi_market/screens/home/home_p.dart';
 import 'package:al_hashmi_market/screens/login/RegisterP.dart';
 import 'package:al_hashmi_market/screens/login/register_details_p.dart';
 import 'package:al_hashmi_market/screens/login/signin_p.dart';
@@ -30,7 +31,7 @@ class Start extends StatelessWidget {
             theme: lightTheme,
             darkTheme: darkTheme,
             home: Consumer<UserM>(
-              builder: ((context, user, child) => SignIn()),
+              builder: ((context, user, child) => isSignIn? Home():SignIn()),
             ))),
       ),
     );

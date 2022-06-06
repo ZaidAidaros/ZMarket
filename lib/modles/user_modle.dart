@@ -1,12 +1,22 @@
 import 'package:al_hashmi_market/api_services/auth.dart';
 import 'package:al_hashmi_market/modles/company_modle.dart';
 import 'package:al_hashmi_market/modles/location_modle.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 late final UserM userM;
+bool isSignIn=false;
 late final AuthService authService;
+late final UserCredential userCredential;
+
+class UserFirebaseM{
+  String uid;
+  UserFirebaseM({this.uid=""});
+}
 
 class UserM extends ChangeNotifier{
+  SharedPreferences sharedPref=SharedPreferences.getInstance() as SharedPreferences;
   late final String _uid;
   late final String _first_name;
   late final String _sec_name;
@@ -26,9 +36,9 @@ class UserM extends ChangeNotifier{
   this._family_name,this._email,this._phone,this._location,
   this._dateOfBirthDay,this.isHaveCom,this._company){
     _full_name= _first_name+' '+_sec_name+' '+_last_name+' '+_family_name;
+  
   }
 
-  
 
   String get firstName=>_first_name;
   String get familytName=>_family_name;

@@ -1,17 +1,17 @@
+import 'dart:html';
+
 import 'package:al_hashmi_market/screens/login/direc_laung_widget.dart';
 import 'package:al_hashmi_market/widgets/input_text.dart';
 import 'package:al_hashmi_market/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
-
 class RegisterDetialsP extends StatefulWidget {
-  
   @override
   State<RegisterDetialsP> createState() => RegisterDetialsPState();
 }
 
 class RegisterDetialsPState extends State<RegisterDetialsP> {
-bool isHaveCom = false;
+  bool isHaveCom = false;
   final GlobalKey<FormState> key = GlobalKey<FormState>();
   TextEditingController textEditingControllerFN = TextEditingController();
   TextEditingController textEditingControllerSecN = TextEditingController();
@@ -21,7 +21,6 @@ bool isHaveCom = false;
   TextEditingController textEditingControllerDC = TextEditingController();
   TextEditingController textEditingControllerEmail = TextEditingController();
   TextEditingController textEditingControllerPass = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +102,6 @@ bool isHaveCom = false;
                             setState(() {
                               isHaveCom = !isHaveCom;
                             });
-                            
                           },
                         ),
                       ],
@@ -152,7 +150,6 @@ bool isHaveCom = false;
                       child: ElevatedButton(
                         onPressed: () {},
                         child: const Text("حفظ"),
-                        
                         style: ElevatedButton.styleFrom(
                           primary: Colors.green,
                         ),

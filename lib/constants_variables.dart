@@ -1,7 +1,7 @@
 double widthOfScreen=360;
 double heihtOfScreen=720;
 String sampleImageUrl='gs://al-hashmi-market-z.appspot.com/ProductsPhotos/pexels-artem-beliaikin-1091778.jpg';
-
+List<String> countriesKey=['00967','00968'];
 
 /*
   sqflite: any

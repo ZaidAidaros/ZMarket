@@ -3,12 +3,13 @@ import 'dart:async';
 import 'package:al_hashmi_market/modles/user_modle.dart';
 import 'package:al_hashmi_market/screens/home/home_p.dart';
 import 'package:al_hashmi_market/screens/login/direc_laung_widget.dart';
+import 'package:al_hashmi_market/screens/login/register_details_p.dart';
 import 'package:al_hashmi_market/widgets/input_text.dart';
 import 'package:flutter/material.dart';
 
 class VirefyP extends StatefulWidget {
-  const VirefyP({Key? key}) : super(key: key);
-
+  final String phoneNum;
+  VirefyP(this.phoneNum);
   @override
   State<VirefyP> createState() => _VirefyPState();
 }
@@ -16,6 +17,24 @@ class VirefyP extends StatefulWidget {
 class _VirefyPState extends State<VirefyP> {
   final GlobalKey<FormState> key = GlobalKey<FormState>();
   TextEditingController textEditingControllerNumber = TextEditingController();
+
+  @override
+  void initState() async {
+    await authService.virefyPhoneNum(widget.phoneNum, () {
+      //test if user has acount prev
+      if (true) {
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (_) => RegisterDetialsP()));
+      }
+    });
+    if (userCredential.user!.uid == null) {
+    } else {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) => RegisterDetialsP()));
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Arabic(
@@ -56,7 +75,6 @@ class _VirefyPState extends State<VirefyP> {
                   ElevatedButton(
                     onPressed: () {
                       if (key.currentState!.validate()) {
-                        
                         Navigator.of(context).pushReplacement(
                             MaterialPageRoute(builder: (context) => Home()));
                       }
